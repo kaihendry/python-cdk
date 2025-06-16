@@ -21,11 +21,14 @@
 			"extensions": [
 				"ms-python.python",
 				"ms-python.vscode-pylance"
-			]
+			],
+			"settings": {
+				"python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
+			}
 		}
 	},
 	"mounts": [
 		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/home/codespace/.aws,type=bind,consistency=cached",
-		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/codespace/.ssh,type=bind,consistency=cached"
-	]
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/codespace/.ssh,type=bind,consistency=cached",
+	],
 }

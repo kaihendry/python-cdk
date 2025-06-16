@@ -8,6 +8,9 @@ if ! command -v uv &>/dev/null; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+uv venv --no-managed-python
+uv sync
+
 # uv tool install pre-commit --with pre-commit-uv
 # pre-commit install --install-hooks
 
