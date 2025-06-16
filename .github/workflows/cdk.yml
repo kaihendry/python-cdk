@@ -1,6 +1,10 @@
 name: CDK Build and Test
 
-on: [ push ]
+on: [push]
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   build:
