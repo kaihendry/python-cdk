@@ -6,6 +6,7 @@
 	"features": {
 		"ghcr.io/devcontainers/features/aws-cli:1": {},
 		"ghcr.io/devcontainers-extra/features/ripgrep:1": {},
+		"ghcr.io/devcontainers-extra/features/fd:1": {},
 		"ghcr.io/devcontainers-extra/features/aws-cdk:2": {}
 	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
