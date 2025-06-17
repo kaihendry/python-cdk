@@ -20,10 +20,19 @@
 			// Add the IDs of extensions you want installed when the container is created
 			"extensions": [
 				"ms-python.python",
-				"ms-python.vscode-pylance"
+				"ms-python.vscode-pylance",
+				"charliermarsh.ruff"
 			],
 			"settings": {
-				"python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
+				"python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+				"[python]": {
+					"editor.formatOnSave": true,
+					"editor.codeActionsOnSave": {
+						"source.fixAll": "explicit",
+						"source.organizeImports": "explicit"
+					},
+					"editor.defaultFormatter": "charliermarsh.ruff"
+				}
 			}
 		}
 	},
