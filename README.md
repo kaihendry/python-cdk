@@ -23,17 +23,17 @@ The CDK team has stated that [`--tags` should never have been a feature](https:/
 ### Our approach
 
 ```python
-# In app.py - use environment variable
-commit_hash = os.environ.get("COMMIT_HASH")
-if commit_hash:
-    cdk.Tags.of(app).add("commitHash", commit_hash)
+# In app.py - fallback chain: COMMIT_HASH -> GITHUB_SHA (shortened) -> "unknown"
+commit_hash = os.environ.get("COMMIT_HASH") or os.environ.get("GITHUB_SHA", "")[:7] or "unknown"
+cdk.Tags.of(app).add("commitHash", commit_hash)
 ```
 
-```makefile
-# In Makefile - pass as environment variable
-deploy:
-    COMMIT_HASH=$(shell git rev-parse --short HEAD) cdk deploy
-```
+| Environment | Source |
+|-------------|--------|
+| Local (Makefile) | `COMMIT_HASH` from `git rev-parse --short HEAD` |
+| GitHub Actions | `GITHUB_SHA` (auto-shortened to 7 chars) |
+| Other CI/CD | Set `COMMIT_HASH` explicitly |
+| Fallback | `"unknown"` |
 
 This ensures the `commitHash` tag is written directly into the CloudFormation template via `Tags.of()`, avoiding any stack-level tag replacement issues.
 
