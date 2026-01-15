@@ -1,6 +1,6 @@
 .PHONY: synth diff deploy
 deploy:
-	cdk deploy --tags commitHash=$(shell git rev-parse --short HEAD)
+	COMMIT_HASH=$(shell git rev-parse --short HEAD) cdk deploy
 
 synth:
 	cdk synth

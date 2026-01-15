@@ -7,6 +7,14 @@ from python_cdk.python_cdk_stack import PythonCdkStack
 
 
 app = cdk.App()
+
+# Add commitHash tag via environment variable (not CLI --tags)
+# CLI --tags can replace stack-level tags, breaking tag propagation
+# See: https://github.com/aws/aws-cdk/issues/9259
+commit_hash = os.environ.get("COMMIT_HASH")
+if commit_hash:
+    cdk.Tags.of(app).add("commitHash", commit_hash)
+
 PythonCdkStack(app, "PythonCdkStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
