@@ -9,6 +9,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CDK_DISABLE_CLI_TELEMETRY: "true"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6

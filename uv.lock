@@ -212,7 +212,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "aws-cdk-lib", specifier = ">=2.234.1" },
-    { name = "constructs", specifier = ">=10.4.4,<11.0.0" },
+    { name = "constructs", specifier = ">=10.4.4" },
 ]
 
 [package.metadata.requires-dev]
